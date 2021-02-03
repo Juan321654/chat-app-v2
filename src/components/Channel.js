@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Message from './Message'
 import firebase from 'firebase/app';
 
 const Channel = ({ user = null, db = null }) => {
@@ -43,7 +44,8 @@ const Channel = ({ user = null, db = null }) => {
     <>
       <ul> 
         {messages.map(message => (
-          <li key={message.id}>{message.text}</li>
+          <li key={message.id}>
+            <Message {...message}/></li>
         ))}
       </ul>
       <form onSubmit={handleOnSubmit}>

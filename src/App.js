@@ -6,6 +6,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+// TODO -- add a delete and edit button
+// DELETE documentation https://firebase.google.com/docs/firestore/manage-data/delete-data
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
