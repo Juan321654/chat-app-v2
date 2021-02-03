@@ -61,7 +61,7 @@ function App() {
   if (initializing) return "Loading..."
 
   return (
-    <div>
+    <div className="App">
       {user 
       ? (
       <> 
