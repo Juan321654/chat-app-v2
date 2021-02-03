@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../src/components/Button'
+import Channel from '../src/components/Channel'
 import './App.css';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,6 +18,7 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 function App() {
   const [user, setUser] = useState(() => auth.currentUser);
@@ -62,6 +65,7 @@ function App() {
       <> 
       <Button onClick={signOut}>Sign out</Button>
       <p>Welcome to the chat</p>
+      <Channel user={user} db={db} />
       </>) 
       : (<Button onClick={signInWithGoogle}>Sign in with Google</Button>)}
     </div>
