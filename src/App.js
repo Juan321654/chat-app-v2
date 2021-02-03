@@ -45,11 +45,25 @@ function App() {
     }
   };
 
+  const signOut = async () => {
+    try {
+      await firebase.auth().signOut();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+ 
   if (initializing) return "Loading..."
 
   return (
     <div>
-      {user ? ('Welcome to the chat') : (<Button onClick={signInWithGoogle}>Sign in with Google</Button>)}
+      {user 
+      ? (
+      <> 
+      <Button onClick={signOut}>Sign out</Button>
+      <p>Welcome to the chat</p>
+      </>) 
+      : (<Button onClick={signInWithGoogle}>Sign in with Google</Button>)}
     </div>
   );
 }
