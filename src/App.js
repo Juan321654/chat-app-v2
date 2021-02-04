@@ -38,7 +38,7 @@ function App() {
       }
     });
     return unsubscribe;
-  }, []);
+  }, [initializing]);
 
   const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
