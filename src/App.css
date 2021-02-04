@@ -149,6 +149,7 @@ input {
   transition: all 0.2s;
   border-radius: 3px;
   height: 24px;
+  margin: 0 3px;
 }
 
 .delete {
