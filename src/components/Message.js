@@ -6,7 +6,7 @@ const Message = ({
   text = '',
   displayName = '',
   photoURL = '', 
-  message
+  
 }) => {
   // const handleClick = (e) => {
   //   e.preventDefault();

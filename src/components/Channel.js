@@ -5,8 +5,7 @@ import firebase from 'firebase/app';
 const Channel = ({ user = null, db = null }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-
-  console.log(messages);
+  const [editState, setEditState] = useState(false);
   
   const { uid, displayName, photoURL } = user;
   
@@ -48,12 +47,30 @@ const Channel = ({ user = null, db = null }) => {
     db.collection('messages').doc(id).delete()
   }
 
+  // send Editted Data to firebase
+  const handleEdit = (id) => {
+    db.collection('messages').doc(id).update({
+      text: newMessage,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      displayName,
+      photoURL
+    })
+  }
+
+  const handleEditState = () => {
+    setEditState(!editState)
+  }
+
+  // onClick={() => handleEdit(message.id)}
+
   return (
     <>
       <ul> 
         {messages.map(message => (
           <div key={message.id}>
             <div className="delete" onClick={() => handleClick(message.id)}>x</div>
+            <div className="edit" onClick={handleEditState}>{editState ? 'Cancel' : 'Edit'}</div>
           <li >
             <Message {...message}/></li>
           </div>
