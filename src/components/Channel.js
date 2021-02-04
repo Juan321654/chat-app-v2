@@ -48,21 +48,19 @@ const Channel = ({ user = null, db = null }) => {
   }
 
   // send Editted Data to firebase
-  // const handleEdit = (id) => {
-  //   db.collection('messages').doc(id).update({
-  //     text: newMessage,
-  //     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-  //     uid,
-  //     displayName,
-  //     photoURL
-  //   })
-  // }
+  const handleEdit = (id) => {
+    db.collection('messages').doc(id).update({
+      text: newMessage,
+      // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      displayName,
+      photoURL
+    })
+  }
 
   const handleEditState = () => {
     setEditState(!editState)
   }
-
-  // onClick={() => handleEdit(message.id)}
 
   return (
     <>
@@ -71,6 +69,7 @@ const Channel = ({ user = null, db = null }) => {
           <div key={message.id}>
             <div className="delete" onClick={() => handleClick(message.id)}>x</div>
             <div className="edit" onClick={handleEditState}>{editState ? 'Cancel' : 'Edit'}</div>
+            <div className={editState ? 'edit' : 'none'} onClick={() => handleEdit(message.id)}>{editState ? '✔' : null}</div>
           <li >
             <Message {...message}/></li>
           </div>
@@ -83,9 +82,10 @@ const Channel = ({ user = null, db = null }) => {
         onChange={handleOnChange}
         placeholder="Type your message here ..."
         />
-        <button type="submit" disabled={!newMessage}>
+        {editState ? null : <button type="submit" disabled={!newMessage}>
           Send
-        </button>
+        </button>}
+        
       </form>
 
     </>

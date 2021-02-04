@@ -91,3 +91,7 @@ p {
 .time {
   font-size: 10px;
 }
+
+.btn__confirm__edit {
+  padding: 0;
+}
