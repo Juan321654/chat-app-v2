@@ -22,6 +22,7 @@
   justify-content: space-between;
   background-color: var(--main-bg-color-hover);
   color: white;
+  margin-bottom: 10px;
 }
 
 .MuiSvgIcon-fontSizeLarge {
@@ -58,6 +59,10 @@
 }
 
 /* ----------------------------Messages --------------------------  */
+.container_messages{
+  margin: 10px 0;
+}
+
 .messages_divs{
   width: 90%;
   display: flex;
@@ -74,6 +79,7 @@
   margin-bottom: 10px;
   box-shadow: 0 0 1px var(--main-bg-color-hover);
   border-radius: 3px;
+  padding: 10px;
 }
 
 .messages_divs--delete_edit{

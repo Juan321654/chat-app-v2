@@ -64,7 +64,7 @@ const Channel = ({ user = null, db = null }) => {
   }
 
   return (
-    <div>
+    <div className="container_messages">
       <ul> 
         {messages.map(message => (
           <div className="messages_divs2" key={message.id}>
