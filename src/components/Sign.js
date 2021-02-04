@@ -1,5 +1,4 @@
 import React from 'react'
-import Filter9Icon from '@material-ui/icons/Filter9';
 
 const Sign = () => {
   return (
