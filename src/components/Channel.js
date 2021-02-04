@@ -48,15 +48,15 @@ const Channel = ({ user = null, db = null }) => {
   }
 
   // send Editted Data to firebase
-  const handleEdit = (id) => {
-    db.collection('messages').doc(id).update({
-      text: newMessage,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      displayName,
-      photoURL
-    })
-  }
+  // const handleEdit = (id) => {
+  //   db.collection('messages').doc(id).update({
+  //     text: newMessage,
+  //     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+  //     uid,
+  //     displayName,
+  //     photoURL
+  //   })
+  // }
 
   const handleEditState = () => {
     setEditState(!editState)
