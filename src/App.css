@@ -49,6 +49,26 @@
   /* display: inline; */
 }
 
+/* ----------------------------Messages --------------------------  */
+.messages_divs{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 4%;
+}
+
+.messages_divs--delete_edit{
+  display: flex
+}
+
+
+
+
+
+
+/* ---------------------random ------------------------  */
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -87,7 +107,6 @@ button:focus {
 
 input {
   padding: 13px 32px;
-  font-size: 16px;
   outline: 0;
 }
 

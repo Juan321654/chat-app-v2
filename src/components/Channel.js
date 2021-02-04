@@ -59,20 +59,22 @@ const Channel = ({ user = null, db = null }) => {
   }
 
   const handleEditState = (id) => {
-    console.log(id);
+    // console.log(id);
     setEditState(!editState)
   }
 
   return (
-    <>
+    <div>
       <ul> 
         {messages.map(message => (
-          <div key={message.id}>
-            <div className="delete" onClick={() => handleClick(message.id)}>{editState ? null : 'x'}</div>
-            <div className="edit" onClick={() => handleEditState(message.id)}>{editState && message.id ? 'Cancel' : 'Edit'}</div>
-            <div className={editState ? 'edit' : 'none'} onClick={() => handleEdit(message.id)}>{editState ? '✔' : null}</div>
+          <div className="messages_divs" key={message.id}>
           <li >
             <Message {...message}/></li>
+            <div className="messages_divs--delete_edit">
+              <div className="delete" onClick={() => handleClick(message.id)}>{editState ? null : 'x'}</div>
+              <div className="edit" onClick={() => handleEditState(message.id)}>{editState && message.id ? 'Cancel' : 'Edit'}</div>
+              <div className={editState ? 'edit' : 'none'} onClick={() => handleEdit(message.id)}>{editState ? '✔' : null}</div>
+            </div>
           </div>
         ))}
       </ul>
@@ -89,7 +91,7 @@ const Channel = ({ user = null, db = null }) => {
         
       </form>
 
-    </>
+    </div>
   )
 }
 

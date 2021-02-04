@@ -13,7 +13,7 @@ const Message = ({
   //   console.log(message);
   // }
   return (
-    <div>
+    <div className="messages_divs">
       {/* <div className="delete" onClick={handleClick}>x</div> */}
       {photoURL 
       ? (
