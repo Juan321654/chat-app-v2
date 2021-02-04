@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import Button from '../src/components/Button'
-import Channel from '../src/components/Channel'
-import './App.css';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import Button from "../src/components/Button";
+import Channel from "../src/components/Channel";
+import "./App.css";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
+import Filter9Icon from '@material-ui/icons/Filter9';
+
 
 // TODO -- add a delete and edit button
 // DELETE documentation https://firebase.google.com/docs/firestore/manage-data/delete-data
@@ -16,7 +19,7 @@ firebase.initializeApp({
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID 
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 });
 
 const auth = firebase.auth();
@@ -27,14 +30,14 @@ function App() {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
       } else {
         setUser(null);
       }
       if (initializing) {
-        setInitializing(false)
+        setInitializing(false);
       }
     });
     return unsubscribe;
@@ -56,20 +59,28 @@ function App() {
     } catch (error) {
       console.log(error.message);
     }
-  }
- 
-  if (initializing) return "Loading..."
+  };
+
+  if (initializing) return "Loading...";
 
   return (
     <div className="App">
-      {user 
-      ? (
-      <> 
-      <Button onClick={signOut}>Sign out</Button>
-      <p>Welcome to the chat</p>
-      <Channel user={user} db={db} />
-      </>) 
-      : (<Button onClick={signInWithGoogle}>Sign in with Google</Button>)}
+      {user ? (
+        <>
+          <div className="header">
+            <Filter9Icon fontSize="large"/>
+            <Button onClick={signOut}>Sign out</Button>
+          </div>
+
+          <p>Welcome to the chat</p>
+          <Channel user={user} db={db} />
+        </>
+      ) : (
+        <div className="header">
+          <Filter9Icon fontSize="large"/>
+          <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+        </div>
+      )}
     </div>
   );
 }

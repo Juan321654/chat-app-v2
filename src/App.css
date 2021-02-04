@@ -1,12 +1,28 @@
 .App {
   text-align: center;
-  margin: 10px auto;
+  margin: 0px auto;
 }
+
 
 :root {
   --main-bg-color: rgb(53, 53, 53);
   --main-bg-color-hover: rgb(255, 95, 37);
 }
+
+/* ---------------------Header ---------------------------- */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--main-bg-color-hover);
+  color: white;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+  padding: 10px 0 0 10px;
+}
+
 
 ul {
   list-style-type: none;

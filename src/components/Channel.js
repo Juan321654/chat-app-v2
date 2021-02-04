@@ -58,7 +58,8 @@ const Channel = ({ user = null, db = null }) => {
     })
   }
 
-  const handleEditState = () => {
+  const handleEditState = (id) => {
+    console.log(id);
     setEditState(!editState)
   }
 
@@ -67,8 +68,8 @@ const Channel = ({ user = null, db = null }) => {
       <ul> 
         {messages.map(message => (
           <div key={message.id}>
-            <div className="delete" onClick={() => handleClick(message.id)}>x</div>
-            <div className="edit" onClick={handleEditState}>{editState ? 'Cancel' : 'Edit'}</div>
+            <div className="delete" onClick={() => handleClick(message.id)}>{editState ? null : 'x'}</div>
+            <div className="edit" onClick={() => handleEditState(message.id)}>{editState && message.id ? 'Cancel' : 'Edit'}</div>
             <div className={editState ? 'edit' : 'none'} onClick={() => handleEdit(message.id)}>{editState ? '✔' : null}</div>
           <li >
             <Message {...message}/></li>
