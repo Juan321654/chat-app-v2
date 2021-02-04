@@ -55,7 +55,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+.messages_divs2{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-left: 4%;
+  margin-bottom: 10px;
+  box-shadow: 0 0 2px rgb(0 0 0 / 20%);
+  border-radius: 3px;
 }
 
 .messages_divs--delete_edit{
@@ -77,6 +87,7 @@ ul {
 img {
   border-radius: 50%;
   transition: all 0.2s;
+  padding: 0px 4px 0px 0;
 }
 
 img:hover {
@@ -118,6 +129,8 @@ input {
   color: white;
   cursor: pointer;
   transition: all 0.2s;
+  border-radius: 3px;
+  height: 24px;
 }
 
 .delete {
@@ -138,10 +151,13 @@ input {
 
 span {
   margin: 5px;
+  min-width: fit-content;
+  font-size: 11px;
 }
 
 p {
   margin: 2px;
+  min-width: fit-content;
 }
 
 .time {

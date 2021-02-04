@@ -67,7 +67,7 @@ const Channel = ({ user = null, db = null }) => {
     <div>
       <ul> 
         {messages.map(message => (
-          <div className="messages_divs" key={message.id}>
+          <div className="messages_divs2" key={message.id}>
           <li >
             <Message {...message}/></li>
             <div className="messages_divs--delete_edit">
