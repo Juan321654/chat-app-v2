@@ -71,6 +71,9 @@
 .messages_divs--delete_edit{
   display: flex
 }
+.confirm_edit {
+  margin-bottom: 10px;
+}
 
 
 

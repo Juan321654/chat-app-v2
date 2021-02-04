@@ -79,6 +79,9 @@ const Channel = ({ user = null, db = null }) => {
         ))}
       </ul>
       <form onSubmit={handleOnSubmit}>
+        <div className="confirm_edit">
+        {editState ? 'Type something and click on the checkmark to confirm, or cancel' : null}
+        </div>
         <input 
         type="text"
         value={newMessage}
