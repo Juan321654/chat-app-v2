@@ -6,8 +6,10 @@ const Channel = ({ user = null, db = null }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
+  console.log(messages);
+  
   const { uid, displayName, photoURL } = user;
-
+  
   useEffect(() =>{
     if (db) {
       const unsubscribe = db.collection('messages').orderBy('createdAt')
@@ -21,14 +23,14 @@ const Channel = ({ user = null, db = null }) => {
       return unsubscribe;
     }
   }, [db]);
-
+  
+  // console.log(messages[0].id);
   const handleOnChange = e => {
     setNewMessage(e.target.value)
   };
 
   const handleOnSubmit = e => {
     e.preventDefault();
-
     if (db) {
       db.collection('messages').add({
         text: newMessage,
@@ -40,12 +42,21 @@ const Channel = ({ user = null, db = null }) => {
       })
     }
   }
+
+  // Delete Data from firebase handler
+  const handleClick = (id) => {
+    db.collection('messages').doc(id).delete()
+  }
+
   return (
     <>
       <ul> 
         {messages.map(message => (
-          <li key={message.id}>
+          <div key={message.id}>
+            <div className="delete" onClick={() => handleClick(message.id)}>x</div>
+          <li >
             <Message {...message}/></li>
+          </div>
         ))}
       </ul>
       <form onSubmit={handleOnSubmit}>

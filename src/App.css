@@ -1,3 +1,8 @@
+:root {
+  --main-bg-color: rgb(53, 53, 53);
+  --main-bg-color-hover: rgb(255, 95, 37);
+}
+
 ul {
   list-style-type: none;
 }
@@ -12,7 +17,7 @@ img:hover {
 }
 
 button {
-  background-color: orangered;
+  background-color: var(--main-bg-color);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -24,7 +29,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(255, 95, 37);
+  background-color: var(--main-bg-color-hover);
   transform: scale(0.9);
   cursor: pointer;
 }
@@ -37,4 +42,19 @@ input {
   padding: 13px 32px;
   font-size: 16px;
   outline: 0;
+}
+
+.delete {
+  background-color: var(--main-bg-color);
+  display: inline-block;
+  padding: 0px 8px 4px 8px;
+  color: white;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.delete:hover {
+  background-color: var(--main-bg-color-hover);
+  transform: scale(0.9);
+  cursor: pointer;
 }

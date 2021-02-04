@@ -6,9 +6,15 @@ const Message = ({
   text = '',
   displayName = '',
   photoURL = '', 
+  message
 }) => {
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   console.log(message);
+  // }
   return (
     <div>
+      {/* <div className="delete" onClick={handleClick}>x</div> */}
       {photoURL 
       ? (
         <img src={photoURL} alt="Avatar" width={45} height={45} />
