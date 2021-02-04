@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../src/components/Button";
 import Channel from "../src/components/Channel";
+import Sign from '../src/components/Sign';
 import "./App.css";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -76,9 +77,16 @@ function App() {
           <Channel user={user} db={db} />
         </>
       ) : (
-        <div className="header">
-          <Filter9Icon fontSize="large"/>
-          <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+        <div>
+          <div className="header">
+            <Filter9Icon fontSize="large"/>
+            <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+            {/* <div className="sign">
+            </div> */}
+          </div>
+          <div className="app_main_sign">
+              <Sign />
+          </div>
         </div>
       )}
     </div>

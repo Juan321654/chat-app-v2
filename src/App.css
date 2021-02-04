@@ -1,8 +1,11 @@
-.App {
+* {
   text-align: center;
-  margin: 0px auto;
+  margin: 0;
+  /* height: 100vh; */
+  /* width: auto; */
+  font-size: 17px;
+  letter-spacing: 1px;
 }
-
 
 :root {
   --main-bg-color: rgb(53, 53, 53);
@@ -20,9 +23,31 @@
 
 .MuiSvgIcon-fontSizeLarge {
   font-size: 2.1875rem;
-  padding: 10px 0 0 10px;
+  padding: 6px 0 0 10px;
 }
 
+/* -----------------------Body ----------------------------------  */
+.app_main_sign{
+  display: flex;
+  justify-content: center;
+  padding-top: 20%;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.sign {
+  height: 300px;
+  width: 300px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+  background-color: var(--main-bg-color-hover);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: auto; */
+  /* display: inline; */
+}
 
 ul {
   list-style-type: none;
@@ -31,7 +56,7 @@ ul {
 
 img {
   border-radius: 50%;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 img:hover {
@@ -47,7 +72,7 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 button:hover {
@@ -73,7 +98,7 @@ input {
   padding: 0px 8px 4px 8px;
   color: white;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .delete {
@@ -93,10 +118,6 @@ input {
 }
 
 span {
-  margin: 5px;
-}
-
-div {
   margin: 5px;
 }
 
