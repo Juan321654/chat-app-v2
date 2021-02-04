@@ -5,11 +5,14 @@
   /* width: auto; */
   font-size: 17px;
   letter-spacing: 1px;
+  color: white;
+  background-color: var(--main-bg-color-dark)
 }
 
 :root {
-  --main-bg-color: rgb(53, 53, 53);
-  --main-bg-color-hover: rgb(255, 95, 37);
+  --main-bg-color: rgb(82, 82, 82);
+  --main-bg-color-hover: rgb(236, 98, 95);
+  --main-bg-color-dark: rgb(49, 49, 49);
 }
 
 /* ---------------------Header ---------------------------- */
@@ -24,6 +27,7 @@
 .MuiSvgIcon-fontSizeLarge {
   font-size: 2.1875rem;
   padding: 6px 0 0 10px;
+  background-color: var(--main-bg-color-hover)
 }
 
 /* -----------------------Body ----------------------------------  */
@@ -39,7 +43,7 @@
 .sign {
   height: 300px;
   width: 300px;
-  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 5px var(--main-bg-color-hover);
   background-color: var(--main-bg-color-hover);
   border: none;
   display: flex;
@@ -47,6 +51,10 @@
   align-items: center;
   /* margin: auto; */
   /* display: inline; */
+}
+
+.sign_p {
+  background-color: var(--main-bg-color-hover);
 }
 
 /* ----------------------------Messages --------------------------  */
@@ -64,7 +72,7 @@
   justify-content: space-between;
   margin-left: 4%;
   margin-bottom: 10px;
-  box-shadow: 0 0 2px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 1px var(--main-bg-color-hover);
   border-radius: 3px;
 }
 
@@ -122,6 +130,7 @@ button:focus {
 input {
   padding: 13px 32px;
   outline: 0;
+  border: 1px solid var(--main-bg-color-hover);
 }
 
 .delete,
@@ -155,7 +164,8 @@ input {
 span {
   margin: 5px;
   min-width: fit-content;
-  font-size: 11px;
+  font-size: 10px;
+  color: var(--main-bg-color-hover);
 }
 
 p {

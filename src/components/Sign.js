@@ -3,11 +3,11 @@ import React from 'react'
 const Sign = () => {
   return (
     <div className="sign">
-      <p>
+      <p className="sign_p">
       Welcome to 
       9 Chat
       </p>
-      <p>Please Sign in</p>
+      <p className="sign_p">Please Sign in</p>
     </div>
   )
 }
