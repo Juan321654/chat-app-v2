@@ -1,6 +1,10 @@
 import React from "react";
 const Button = ({ onClick = null, children = null }) => {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+  <div className="btn btn-signIn">
+    <button onClick={onClick}>{children}</button>
+  </div>
+  )
 };
 
 export default Button;

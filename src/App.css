@@ -1,3 +1,8 @@
+.App {
+  text-align: center;
+  margin: 10px auto;
+}
+
 :root {
   --main-bg-color: rgb(53, 53, 53);
   --main-bg-color-hover: rgb(255, 95, 37);
@@ -5,6 +10,7 @@
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 img {
@@ -57,4 +63,9 @@ input {
   background-color: var(--main-bg-color-hover);
   transform: scale(0.9);
   cursor: pointer;
+}
+
+.btn-signIn {
+  display: flex;
+  justify-content: center;
 }
