@@ -113,6 +113,7 @@
 .container_channel_form {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 ::-webkit-scrollbar {
