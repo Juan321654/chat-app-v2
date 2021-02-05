@@ -73,8 +73,10 @@ const Channel = ({ user = null, db = null }) => {
     }
   };
 
-  const handleEditState = (id) => {
-    setEditState(!editState);
+  const handleEditState = (id, userid) => {
+    if(userid === uid) {
+      setEditState(!editState);
+    }
   };
 
   //to upload image to firbase
@@ -99,11 +101,12 @@ const Channel = ({ user = null, db = null }) => {
                 <div className="delete" onClick={() => handleClick(message.id, message.uid)}>
                   {editState ? null : "x"}
                 </div>
+                {/* --------------switch for edit/cancel --------------- */}
                 <div
                   className="edit"
-                  onClick={() => handleEditState(message.id)}
+                  onClick={() => handleEditState(message.id, message.uid)}
                 >
-                  {editState && message.id ? "Cancel" : "Edit"}
+                  {editState ? "Cancel" : "Edit"}
                 </div>
                 <div
                   className={editState ? "edit" : "none"}
@@ -111,6 +114,7 @@ const Channel = ({ user = null, db = null }) => {
                 >
                   {editState ? "✔" : null}
                 </div>
+                {/* ------------------------------------------------------- */}
               </div>
             </div>
           ))}
