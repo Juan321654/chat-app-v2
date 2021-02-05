@@ -50,19 +50,27 @@ const Channel = ({ user = null, db = null }) => {
   };
 
   // Delete Data from firebase handler
-  const handleClick = (id) => {
-    db.collection("messages").doc(id).delete();
+  const handleClick = (id, userid) => {
+    if(userid === uid) {
+      db.collection("messages").doc(id).delete();
+    } else {
+      alert("You do not have permission to delete another user's post")
+    }
   };
 
   // send Editted Data to firebase
-  const handleEdit = (id) => {
-    db.collection("messages").doc(id).update({
-      text: newMessage,
-      // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      displayName,
-      photoURL,
-    });
+  const handleEdit = (id, userid) => {
+    if(userid === uid) {
+      db.collection("messages").doc(id).update({
+        text: newMessage,
+        // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid,
+        displayName,
+        photoURL,
+      });
+    } else {
+      alert("You do not have permission to edit another user's post")
+    }
   };
 
   const handleEditState = (id) => {
@@ -88,7 +96,7 @@ const Channel = ({ user = null, db = null }) => {
                 <Message {...message} />
               </li>
               <div className="messages_divs--delete_edit">
-                <div className="delete" onClick={() => handleClick(message.id)}>
+                <div className="delete" onClick={() => handleClick(message.id, message.uid)}>
                   {editState ? null : "x"}
                 </div>
                 <div
@@ -99,7 +107,7 @@ const Channel = ({ user = null, db = null }) => {
                 </div>
                 <div
                   className={editState ? "edit" : "none"}
-                  onClick={() => handleEdit(message.id)}
+                  onClick={() => handleEdit(message.id, message.uid)}
                 >
                   {editState ? "✔" : null}
                 </div>
