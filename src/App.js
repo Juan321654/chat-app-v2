@@ -4,6 +4,7 @@ import Channel from "../src/components/Channel";
 import Sign from '../src/components/Sign';
 import "./App.css";
 import firebase from "firebase/app";
+import 'firebase/storage';
 import "firebase/auth";
 import "firebase/firestore";
 

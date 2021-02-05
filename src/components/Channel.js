@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import DropZone from '../components/DropZone';
 import Message from './Message'
 import firebase from 'firebase/app';
 
@@ -88,11 +89,14 @@ const Channel = ({ user = null, db = null }) => {
         onChange={handleOnChange}
         placeholder="Type your message here ..."
         />
-        {editState ? null : <button type="submit" disabled={!newMessage}>
+        {editState 
+        ? null 
+        : <button type="submit" disabled={!newMessage}>
           Send
         </button>}
         
       </form>
+      {/* <DropZone /> */}
 
     </div>
   )
