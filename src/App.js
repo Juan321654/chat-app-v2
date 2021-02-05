@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../src/components/Button";
 import Channel from "../src/components/Channel";
-import Sign from '../src/components/Sign';
+import Sign from "../src/components/Sign";
 import "./App.css";
 import firebase from "firebase/app";
-import 'firebase/storage';
+import "firebase/storage";
 import "firebase/auth";
 import "firebase/firestore";
 
-import Filter9Icon from '@material-ui/icons/Filter9';
-
+import Filter9Icon from "@material-ui/icons/Filter9";
 
 // TODO -- add a delete and edit button
 // DELETE documentation https://firebase.google.com/docs/firestore/manage-data/delete-data
@@ -70,7 +69,7 @@ function App() {
       {user ? (
         <>
           <div className="header">
-            <Filter9Icon fontSize="large"/>
+            <Filter9Icon fontSize="large" />
             <Button onClick={signOut}>Sign out</Button>
           </div>
 
@@ -80,13 +79,13 @@ function App() {
       ) : (
         <div>
           <div className="header">
-            <Filter9Icon fontSize="large"/>
+            <Filter9Icon fontSize="large" />
             <Button onClick={signInWithGoogle}>Sign in with Google</Button>
             {/* <div className="sign">
             </div> */}
           </div>
           <div className="app_main_sign">
-              <Sign />
+            <Sign />
           </div>
         </div>
       )}

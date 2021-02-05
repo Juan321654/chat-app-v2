@@ -1,117 +1,141 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import DropZone from '../components/DropZone';
-import Message from './Message'
-import firebase from 'firebase/app';
+import Message from "./Message";
+import firebase from "firebase/app";
 
 const Channel = ({ user = null, db = null }) => {
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
+  const [newMessage, setNewMessage] = useState("");
   const [editState, setEditState] = useState(false);
   const [fileUrl, setFileUrl] = useState(null);
   const [keyState, setKeyState] = useState(true);
-  
+
   const { uid, displayName, photoURL } = user;
-  
-  useEffect(() =>{
+
+  useEffect(() => {
     if (db) {
-      const unsubscribe = db.collection('messages').orderBy('createdAt')
-      .limit(100).onSnapshot(querySnapshot => {
-        const data = querySnapshot.docs.map(doc => ({ 
-          ...doc.data(), 
-          id: doc.id,
-        }))
-        setMessages(data)
-      })
+      const unsubscribe = db
+        .collection("messages")
+        .orderBy("createdAt")
+        .limit(100)
+        .onSnapshot((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+          setMessages(data);
+        });
       return unsubscribe;
     }
   }, [db]);
-  
+
   // console.log(messages[0].id);
-  const handleOnChange = e => {
-    setNewMessage(e.target.value)
+  const handleOnChange = (e) => {
+    setNewMessage(e.target.value);
   };
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
     if (db) {
-      db.collection('messages').add({
+      db.collection("messages").add({
         text: newMessage,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid,
         displayName,
         photoURL,
-        userUpload: fileUrl
-      })
+        userUpload: fileUrl,
+      });
     }
-    setKeyState(!keyState)
-  }
+    setKeyState(!keyState);
+  };
 
   // Delete Data from firebase handler
   const handleClick = (id) => {
-    db.collection('messages').doc(id).delete()
-  }
+    db.collection("messages").doc(id).delete();
+  };
 
   // send Editted Data to firebase
   const handleEdit = (id) => {
-    db.collection('messages').doc(id).update({
+    db.collection("messages").doc(id).update({
       text: newMessage,
       // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       displayName,
-      photoURL
-    })
-  }
+      photoURL,
+    });
+  };
 
   const handleEditState = (id) => {
     // console.log(id);
-    setEditState(!editState)
-  }
+    setEditState(!editState);
+  };
 
   //to upload image to firbase
   const onFileChange = async (e) => {
     const file = e.target.files[0];
-    const storageRef = firebase.storage().ref(); 
+    const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(file.name);
     await fileRef.put(file);
-    setFileUrl(await fileRef.getDownloadURL())
-  }
+    setFileUrl(await fileRef.getDownloadURL());
+  };
 
   return (
-    <div className="container_messages">
-      <ul> 
-        {messages.map(message => (
-          <div className="messages_divs2" key={message.id}>
-          <li >
-            <Message {...message}/></li>
-            <div className="messages_divs--delete_edit">
-              <div className="delete" onClick={() => handleClick(message.id)}>{editState ? null : 'x'}</div>
-              <div className="edit" onClick={() => handleEditState(message.id)}>{editState && message.id ? 'Cancel' : 'Edit'}</div>
-              <div className={editState ? 'edit' : 'none'} onClick={() => handleEdit(message.id)}>{editState ? '✔' : null}</div>
+    <div>
+      <div className="container_messages">
+        <ul>
+          {messages.map((message) => (
+            <div className="messages_divs2" key={message.id}>
+              <li>
+                <Message {...message} />
+              </li>
+              <div className="messages_divs--delete_edit">
+                <div className="delete" onClick={() => handleClick(message.id)}>
+                  {editState ? null : "x"}
+                </div>
+                <div
+                  className="edit"
+                  onClick={() => handleEditState(message.id)}
+                >
+                  {editState && message.id ? "Cancel" : "Edit"}
+                </div>
+                <div
+                  className={editState ? "edit" : "none"}
+                  onClick={() => handleEdit(message.id)}
+                >
+                  {editState ? "✔" : null}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </div>
       <form onSubmit={handleOnSubmit}>
         <div className="confirm_edit">
-        {editState ? 'Type something and click on the checkmark to confirm, or cancel' : null}
+          {editState
+            ? "Type something and click on the checkmark to confirm, or cancel"
+            : null}
         </div>
-        <input 
-        type="text"
-        value={newMessage}
-        onChange={handleOnChange}
-        placeholder="Type your message here ..."
+        <input
+          type="text"
+          value={newMessage}
+          onChange={handleOnChange}
+          placeholder="Type your message here ..."
         />
-        {editState 
-        ? null 
-        : <button type="submit" disabled={!newMessage}>
-          Send
-        </button>}
-        <input type="file" onChange={onFileChange} key={keyState} className="input_userupload"/>
+        {editState ? null : (
+          <button type="submit" disabled={!newMessage}>
+            Send
+          </button>
+        )}
+        <input
+          type="file"
+          onChange={onFileChange}
+          key={keyState}
+          className="input_userupload"
+        />
       </form>
       {/* <DropZone /> */}
-
     </div>
-  )
-}
+  );
+};
 
-export default Channel
+export default Channel;

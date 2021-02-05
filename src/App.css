@@ -6,7 +6,7 @@
   font-size: 17px;
   letter-spacing: 1px;
   color: white;
-  background-color: var(--main-bg-color-dark)
+  background-color: var(--main-bg-color-dark);
 }
 
 :root {
@@ -28,11 +28,11 @@
 .MuiSvgIcon-fontSizeLarge {
   font-size: 2.1875rem;
   padding: 6px 0 0 10px;
-  background-color: var(--main-bg-color-hover)
+  background-color: var(--main-bg-color-hover);
 }
 
 /* -----------------------Body ----------------------------------  */
-.app_main_sign{
+.app_main_sign {
   display: flex;
   justify-content: center;
   padding-top: 20%;
@@ -59,18 +59,20 @@
 }
 
 /* ----------------------------Messages --------------------------  */
-.container_messages{
+.container_messages {
   margin: 10px 0;
+  max-height: 600px;
+  overflow: auto;
 }
 
-.messages_divs{
+.messages_divs {
   width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.messages_divs2{
+.messages_divs2 {
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -82,8 +84,8 @@
   padding: 10px;
 }
 
-.messages_divs--delete_edit{
-  display: flex
+.messages_divs--delete_edit {
+  display: flex;
 }
 .confirm_edit {
   margin-bottom: 10px;
@@ -94,10 +96,24 @@
   padding: 10px;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--main-bg-color); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-bg-color-hover); 
+}
 
-
-
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-bg-color-dark); 
+}
 
 /* ---------------------random ------------------------  */
 

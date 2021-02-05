@@ -1,36 +1,40 @@
-import React from 'react'
-import { formatRelative } from 'date-fns'
+import React from "react";
+import { formatRelative } from "date-fns";
 
-const Message = ({ 
+const Message = ({
   createdAt = null,
-  text = '',
-  displayName = '',
-  photoURL = '', 
-  userUpload = '',
+  text = "",
+  displayName = "",
+  photoURL = "",
+  userUpload = "",
 }) => {
- 
   return (
     <div className="messages_divs">
-
       {/* these are the props that are used to render the data from firebase */}
-      {photoURL 
-      ? (
-        <img className="avatar" src={photoURL} alt="Avatar" width={45} height={45} />
-        ) 
-      : null} 
+      {photoURL ? (
+        <img
+          className="avatar"
+          src={photoURL}
+          alt="Avatar"
+          width={45}
+          height={45}
+        />
+      ) : null}
 
-      {displayName ? <p>{displayName}</p> : null} 
+      {displayName ? <p>{displayName}</p> : null}
 
       {createdAt?.seconds ? (
         <span>
           {formatRelative(new Date(createdAt.seconds * 1000), new Date())}
         </span>
-        ) : null}
+      ) : null}
 
-        <p>{text}</p>
-        {userUpload ? <img src={userUpload} alt="userUpload" width={90} height={70}/> : null }
+      <p>{text}</p>
+      {userUpload ? (
+        <img src={userUpload} alt="userUpload" width={90} height={70} />
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;
