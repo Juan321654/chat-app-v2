@@ -73,7 +73,7 @@ function App() {
             <Button onClick={signOut}>Sign out</Button>
           </div>
 
-          <p>Welcome to the chat</p>
+          <p className="welcome">Welcome to the chat</p>
           <Channel user={user} db={db} />
         </>
       ) : (

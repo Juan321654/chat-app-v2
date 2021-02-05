@@ -1,8 +1,8 @@
 * {
-  text-align: center;
+  /* text-align: center; */
   margin: 0;
   /* height: 100vh; */
-  /* width: auto; */
+  width: auto;
   font-size: 17px;
   letter-spacing: 1px;
   color: white;
@@ -29,6 +29,10 @@
   font-size: 2.1875rem;
   padding: 6px 0 0 10px;
   background-color: var(--main-bg-color-hover);
+}
+
+.welcome {
+  text-align: center;
 }
 
 /* -----------------------Body ----------------------------------  */
@@ -58,20 +62,30 @@
   background-color: var(--main-bg-color-hover);
 }
 
+.displayName {
+  font-weight: 700;
+}
+
 /* ----------------------------Messages --------------------------  */
 .container_messages {
   margin: 10px 0;
   max-height: 600px;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.messages_p {
+  margin-top: 5px;
 }
 
 .messages_divs {
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: left;
 }
+
 .messages_divs2 {
   width: 90%;
   display: flex;
@@ -94,6 +108,11 @@
 .input_userupload {
   margin-left: 20px;
   padding: 10px;
+}
+
+.container_channel_form {
+  display: flex;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -199,6 +218,7 @@ span {
 p {
   margin: 2px;
   min-width: fit-content;
+  font-weight: 100;
 }
 
 .time {

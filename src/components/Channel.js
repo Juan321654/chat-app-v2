@@ -11,6 +11,7 @@ const Channel = ({ user = null, db = null }) => {
   const [keyState, setKeyState] = useState(true);
 
   const { uid, displayName, photoURL } = user;
+  
 
   useEffect(() => {
     if (db) {
@@ -29,7 +30,6 @@ const Channel = ({ user = null, db = null }) => {
     }
   }, [db]);
 
-  // console.log(messages[0].id);
   const handleOnChange = (e) => {
     setNewMessage(e.target.value);
   };
@@ -66,7 +66,6 @@ const Channel = ({ user = null, db = null }) => {
   };
 
   const handleEditState = (id) => {
-    // console.log(id);
     setEditState(!editState);
   };
 
@@ -109,7 +108,7 @@ const Channel = ({ user = null, db = null }) => {
           ))}
         </ul>
       </div>
-      <form onSubmit={handleOnSubmit}>
+      <form className="container_channel_form" onSubmit={handleOnSubmit}>
         <div className="confirm_edit">
           {editState
             ? "Type something and click on the checkmark to confirm, or cancel"
