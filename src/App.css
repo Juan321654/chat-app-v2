@@ -15,6 +15,35 @@
   --main-bg-color-dark: rgb(49, 49, 49);
 }
 
+/* -------------------Animation ---------------------------  */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px)
+  }
+  80% {
+    transform: translateX(10px)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes fadeInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px)
+  }
+  80% {
+    transform: translateY(-10px)
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 /* ---------------------Header ---------------------------- */
 .header {
   display: flex;
@@ -43,6 +72,7 @@
   color: white;
   font-size: 17px;
   letter-spacing: 1px;
+  animation: fadeIn 1s ease-out
 }
 
 .sign {
@@ -73,6 +103,7 @@
   overflow: auto;
   display: flex;
   justify-content: center;
+  animation: fadeIn 1s ease-out
 }
 
 .messages_p {
