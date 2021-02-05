@@ -7,6 +7,8 @@ const Channel = ({ user = null, db = null }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [editState, setEditState] = useState(false);
+  const [fileUrl, setFileUrl] = useState(null);
+  const [keyState, setKeyState] = useState(true);
   
   const { uid, displayName, photoURL } = user;
   
@@ -37,10 +39,11 @@ const Channel = ({ user = null, db = null }) => {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid,
         displayName,
-        photoURL
-
+        photoURL,
+        userUpload: fileUrl
       })
     }
+    setKeyState(!keyState)
   }
 
   // Delete Data from firebase handler
@@ -62,6 +65,15 @@ const Channel = ({ user = null, db = null }) => {
   const handleEditState = (id) => {
     // console.log(id);
     setEditState(!editState)
+  }
+
+  //to upload image to firbase
+  const onFileChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = firebase.storage().ref(); 
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    setFileUrl(await fileRef.getDownloadURL())
   }
 
   return (
@@ -94,7 +106,7 @@ const Channel = ({ user = null, db = null }) => {
         : <button type="submit" disabled={!newMessage}>
           Send
         </button>}
-        
+        <input type="file" onChange={onFileChange} key={keyState} className="input_userupload"/>
       </form>
       {/* <DropZone /> */}
 

@@ -6,27 +6,29 @@ const Message = ({
   text = '',
   displayName = '',
   photoURL = '', 
-  
+  userUpload = '',
 }) => {
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   console.log(message);
-  // }
+ 
   return (
     <div className="messages_divs">
-      {/* <div className="delete" onClick={handleClick}>x</div> */}
+
+      {/* these are the props that are used to render the data from firebase */}
       {photoURL 
       ? (
-        <img src={photoURL} alt="Avatar" width={45} height={45} />
+        <img className="avatar" src={photoURL} alt="Avatar" width={45} height={45} />
         ) 
       : null} 
+
       {displayName ? <p>{displayName}</p> : null} 
+
       {createdAt?.seconds ? (
         <span>
           {formatRelative(new Date(createdAt.seconds * 1000), new Date())}
         </span>
         ) : null}
+
         <p>{text}</p>
+        {userUpload ? <img src={userUpload} alt="userUpload" width={90} height={70}/> : null }
     </div>
   )
 }
