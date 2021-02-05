@@ -111,9 +111,10 @@ const Channel = ({ user = null, db = null }) => {
       <form className="container_channel_form" onSubmit={handleOnSubmit}>
         <div className="confirm_edit">
           {editState
-            ? "Type something and click on the checkmark to confirm, or cancel"
+            ? <div className="channel_cancel_active">"Type something and click on the checkmark to confirm, or cancel"</div>
             : null}
         </div>
+        <div>
         <input
           type="text"
           value={newMessage}
@@ -131,6 +132,7 @@ const Channel = ({ user = null, db = null }) => {
           key={keyState}
           className="input_userupload"
         />
+        </div>
       </form>
       {/* <DropZone /> */}
     </div>
