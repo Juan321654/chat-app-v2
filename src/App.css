@@ -147,6 +147,7 @@
 
 .channel_cancel_active {
   display: flex;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {
